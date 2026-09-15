@@ -324,8 +324,37 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.progress-title {
+  color: var(--text-main);
+}
+
+.progress-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-reset-progress {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-reset-progress:hover {
+  color: var(--accent-rose);
+  border-color: var(--accent-rose);
+  background: var(--accent-rose-bg);
 }
 
 .progress-bar-bg {
@@ -376,7 +405,7 @@ header {
 
 .search-input {
   width: 100%;
-  padding: 0.75rem 1rem 0.75rem 2.75rem;
+  padding: 0.75rem 3.25rem 0.75rem 2.75rem;
   font-size: 0.925rem;
   font-family: var(--font-sans);
   background: var(--bg-input);
@@ -384,44 +413,14 @@ header {
   border-radius: var(--radius-md);
   color: var(--text-main);
   outline: none;
-  transition: all 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
-.progress-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.progress-title {
-  color: var(--text-main);
-}
-
-.progress-right {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.btn-reset-progress {
-  background: transparent;
-  border: 1px solid var(--border-subtle);
+.search-input::placeholder {
   color: var(--text-dim);
-  font-size: 0.75rem;
-  font-weight: 500;
-  padding: 0.15rem 0.5rem;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.btn-reset-progress:hover {
-  color: var(--accent-rose);
-  border-color: var(--accent-rose);
-  background: var(--accent-rose-bg);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .search-input:focus {
@@ -431,22 +430,41 @@ header {
 
 .search-kbd {
   position: absolute;
-  right: 2.25rem;
+  right: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
   font-family: var(--font-mono);
   font-size: 0.75rem;
+  font-weight: 500;
   color: var(--text-dim);
   background: var(--bg-surface);
   border: 1px solid var(--border-strong);
-  padding: 0.15rem 0.45rem;
+  padding: 0 0.4rem;
   border-radius: 4px;
   pointer-events: none;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
   user-select: none;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+}
+
+/* Hide shortcut hint when input is focused or has content */
+.search-input:focus ~ .search-kbd,
+.search-input:not(:placeholder-shown) ~ .search-kbd {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .search-clear {
   position: absolute;
   right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
   background: transparent;
   border: none;
   color: var(--text-dim);
@@ -455,10 +473,13 @@ header {
   display: none;
   font-size: 1.25rem;
   line-height: 1;
+  border-radius: var(--radius-sm);
+  transition: color 0.15s ease, background-color 0.15s ease;
 }
 
 .search-clear:hover {
   color: var(--text-main);
+  background: var(--bg-card-hover);
 }
 
 .filter-group {

@@ -13,7 +13,7 @@
     search: '',
     revealAll: false,
     mastered: new Set(),
-    theme: 'dark'
+    theme: 'light'
   };
 
   // DOM Elements
@@ -99,11 +99,11 @@
       if (savedTheme) {
         applyTheme(savedTheme);
       } else {
-        applyTheme('dark');
+        applyTheme('light');
       }
     } catch (e) {
       console.warn('Could not load localStorage state', e);
-      applyTheme('dark');
+      applyTheme('light');
     }
   }
 
