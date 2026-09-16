@@ -106,6 +106,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -119,6 +121,9 @@ body {
   transition: background-color 0.25s ease, color 0.25s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 /* Accessible Focus Rings (UI/UX Pro Max) */
@@ -794,6 +799,7 @@ main {
   font-weight: 600;
   color: #60a5fa;
   word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 [data-theme="light"] .spec-relation {
@@ -814,6 +820,10 @@ main {
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
   color: var(--text-main);
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* Tasks / Problems to Solve */
@@ -866,13 +876,17 @@ main {
 /* Data Table (for Q1, Q2, etc.) */
 .data-table-wrapper {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   margin: 0.75rem 0;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-subtle);
+  width: 100%;
+  max-width: 100%;
 }
 
 .data-table {
   width: 100%;
+  min-width: 440px;
   border-collapse: collapse;
   font-size: 0.875rem;
   text-align: left;
@@ -1074,6 +1088,8 @@ main {
   font-size: 0.885rem;
   line-height: 1.6;
   color: var(--text-muted);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .step-point::before {
@@ -1113,13 +1129,17 @@ main {
 
 .solution-table-wrapper {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-strong);
   margin-bottom: 1rem;
+  width: 100%;
+  max-width: 100%;
 }
 
 .solution-table {
   width: 100%;
+  min-width: 440px;
   border-collapse: collapse;
   font-size: 0.85rem;
 }
@@ -1343,27 +1363,486 @@ footer {
   color: var(--text-main);
 }
 
-/* Responsive Breakpoints */
-@media (max-width: 768px) {
+/* ==========================================================================
+   Comprehensive Mobile & Tablet Responsive Design System
+   ========================================================================== */
+
+/* Tablet & Small Desktop (max-width: 900px) */
+@media (max-width: 900px) {
   .hero-title {
-    font-size: 1.85rem;
+    font-size: 2.15rem;
   }
+
+  .controls-bar,
+  main {
+    padding: 0 1.25rem;
+  }
+
+  .checklist-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Standard Mobile & Small Tablets (max-width: 768px) */
+@media (max-width: 768px) {
+  header {
+    padding: 0.65rem 1rem;
+  }
+
   .header-inner {
     flex-wrap: wrap;
+    gap: 0.65rem;
   }
+
   .header-actions {
     width: 100%;
     justify-content: space-between;
+    gap: 0.4rem;
   }
+
+  .hero-banner {
+    padding: 2.25rem 1rem 1.75rem;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .progress-card {
+    padding: 0.85rem 1.15rem;
+  }
+
+  .controls-bar {
+    padding: 0 1rem;
+    margin: 1rem auto 0.75rem;
+    gap: 0.75rem;
+  }
+
   .search-row {
     flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
   }
+
+  .search-box {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .filter-group {
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .select-filter {
+    flex: 1;
+    min-width: 0;
+    width: 50%;
+    padding: 0.65rem 0.5rem;
+  }
+
+  .category-tabs {
+    padding: 0.25rem 1rem 0.5rem;
+    margin: 0 -1rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+  }
+
+  .category-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-btn {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.825rem;
+  }
+
+  main {
+    padding: 0 1rem;
+    margin: 0 auto 2rem;
+  }
+
+  .results-meta {
+    font-size: 0.825rem;
+    margin-bottom: 1rem;
+  }
+
+  .question-card {
+    padding: 1.15rem 1rem;
+  }
+
   .card-top {
     flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
   }
+
+  .card-tags {
+    gap: 0.35rem;
+  }
+
   .card-actions-top {
     width: 100%;
+    display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-master {
+    flex: 1;
+    justify-content: center;
+    padding: 0.45rem 0.75rem;
+  }
+
+  .btn-copy {
+    padding: 0.45rem 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .question-title {
+    font-size: 1.15rem;
+    line-height: 1.35;
+  }
+
+  .solution-body {
+    padding: 1rem 0.85rem;
+  }
+
+  .solution-step-item {
+    padding: 0.85rem;
+  }
+
+  .modal-overlay {
+    padding: 1rem;
+  }
+
+  .modal-content {
+    max-height: 92vh;
+  }
+
+  .checklist-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+/* Compact Mobile Phones (max-width: 640px) */
+@media (max-width: 640px) {
+  header {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .logo-text h1 {
+    font-size: 1.1rem;
+  }
+
+  .logo-text p {
+    font-size: 0.7rem;
+  }
+
+  .header-actions .btn {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.78rem;
+    gap: 0.3rem;
+  }
+
+  .hero-banner {
+    padding: 1.75rem 0.75rem 1.25rem;
+  }
+
+  .hero-badge {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.65rem;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.875rem;
+    line-height: 1.45;
+  }
+
+  .progress-card {
+    padding: 0.75rem 0.85rem;
+  }
+
+  .progress-header {
+    font-size: 0.78rem;
+  }
+
+  .progress-right {
+    gap: 0.35rem;
+    font-size: 0.72rem;
+  }
+
+  .btn-reset-progress {
+    font-size: 0.7rem;
+    padding: 0.1rem 0.4rem;
+  }
+
+  .controls-bar {
+    padding: 0 0.75rem;
+    margin: 0.75rem auto 0.5rem;
+  }
+
+  /* Prevent iOS zoom-in on search input and filter selects */
+  .search-input {
+    padding: 0.65rem 2.25rem 0.65rem 2.4rem;
+    font-size: 16px;
+  }
+
+  .search-kbd {
+    display: none !important;
+  }
+
+  .search-icon {
+    left: 0.85rem;
+  }
+
+  .search-clear {
+    right: 0.65rem;
+    font-size: 1.15rem;
+  }
+
+  .select-filter {
+    font-size: 16px;
+    padding: 0.65rem 0.5rem;
+  }
+
+  .category-tabs {
+    padding: 0.25rem 0.75rem 0.5rem;
+    margin: 0 -0.75rem;
+    gap: 0.4rem;
+  }
+
+  .tab-btn {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.78rem;
+    gap: 0.35rem;
+  }
+
+  .tab-count {
+    font-size: 0.68rem;
+    padding: 0.1rem 0.35rem;
+  }
+
+  main {
+    padding: 0 0.75rem;
+    margin: 0 auto 1.5rem;
+  }
+
+  .question-card {
+    padding: 0.95rem 0.8rem;
+    border-radius: var(--radius-md);
+  }
+
+  .question-title {
+    font-size: 1.05rem;
+    line-height: 1.35;
+    margin-bottom: 0.65rem;
+  }
+
+  .spec-box {
+    padding: 0.75rem 0.8rem;
+    margin-bottom: 0.85rem;
+    gap: 0.5rem;
+  }
+
+  .spec-relation {
+    font-size: 0.84rem;
+    line-height: 1.45;
+  }
+
+  .fd-chip {
+    font-size: 0.75rem;
+    padding: 0.18rem 0.45rem;
+  }
+
+  .task-item {
+    font-size: 0.84rem;
+    gap: 0.5rem;
+    line-height: 1.45;
+  }
+
+  .task-number {
+    width: 20px;
+    height: 20px;
+    font-size: 0.7rem;
+  }
+
+  .solution-toggle-btn {
+    padding: 0.65rem 0.85rem;
+    font-size: 0.85rem;
+  }
+
+  .solution-body {
+    padding: 0.75rem 0.65rem;
+    margin-top: 0.65rem;
+  }
+
+  .ck-badge-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.825rem;
+  }
+
+  .solution-step-item {
+    padding: 0.75rem 0.7rem;
+    border-left-width: 3px;
+  }
+
+  .step-pill {
+    font-size: 0.68rem;
+    padding: 0.15rem 0.45rem;
+  }
+
+  .step-title {
+    font-size: 0.88rem;
+  }
+
+  .step-point {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    padding-left: 1rem;
+  }
+
+  .step-point::before {
+    left: 0.15rem;
+  }
+
+  .data-table th,
+  .data-table td,
+  .solution-table th,
+  .solution-table td {
+    padding: 0.45rem 0.6rem;
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+
+  .takeaway-box {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .modal-overlay {
+    padding: 0.5rem;
+  }
+
+  .modal-content {
+    max-height: 95vh;
+    border-radius: var(--radius-md);
+  }
+
+  .modal-header {
+    padding: 0.75rem 1rem;
+  }
+
+  .modal-header h2 {
+    font-size: 1.05rem;
+  }
+
+  .modal-body {
+    padding: 0.85rem;
+    gap: 1rem;
+  }
+
+  footer {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-inner p {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+}
+
+/* Extra Small Phones (max-width: 440px) */
+@media (max-width: 440px) {
+  .logo-text p {
+    display: none;
+  }
+
+  .header-actions {
+    gap: 0.3rem;
+  }
+
+  .header-actions .btn {
+    padding: 0.35rem 0.5rem;
+    font-size: 0.74rem;
+  }
+
+  .hero-title {
+    font-size: 1.35rem;
+  }
+
+  .filter-group {
+    flex-direction: row;
+    gap: 0.4rem;
+  }
+
+  .select-filter {
+    padding: 0.55rem 0.4rem;
+    font-size: 16px;
+  }
+
+  .card-actions-top {
+    flex-direction: row;
+  }
+
+  .btn-master {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.72rem;
+  }
+}
+
+/* Ultra Narrow Screen Safety (max-width: 360px) */
+@media (max-width: 360px) {
+  .header-actions .btn span {
+    display: none;
+  }
+
+  .header-actions .btn {
+    padding: 0.4rem;
+  }
+
+  .filter-group {
+    flex-direction: column;
+  }
+
+  .select-filter {
+    width: 100%;
+  }
+
+  .hero-title {
+    font-size: 1.25rem;
   }
 }
 
