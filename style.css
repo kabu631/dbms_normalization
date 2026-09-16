@@ -533,6 +533,10 @@ header {
   transition: all 0.2s ease;
 }
 
+.tab-label-short {
+  display: none;
+}
+
 .tab-btn:hover {
   color: var(--text-main);
   border-color: var(--border-strong);
@@ -569,6 +573,8 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   margin-bottom: 1.25rem;
   font-size: 0.875rem;
   color: var(--text-muted);
@@ -1437,34 +1443,58 @@ footer {
 
   .filter-group {
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 0.5rem;
   }
 
   .select-filter {
-    flex: 1;
+    width: 100%;
     min-width: 0;
-    width: 50%;
+    max-width: 100%;
     padding: 0.65rem 0.5rem;
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box;
   }
 
   .category-tabs {
-    padding: 0.25rem 1rem 0.5rem;
-    margin: 0 -1rem;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    scroll-snap-type: x proximity;
-  }
-
-  .category-tabs::-webkit-scrollbar {
-    display: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-x: visible;
   }
 
   .tab-btn {
-    flex-shrink: 0;
-    scroll-snap-align: start;
-    padding: 0.55rem 0.85rem;
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0.7rem;
     font-size: 0.825rem;
+    border-radius: var(--radius-md);
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tab-btn span:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .tab-count {
+    flex-shrink: 0;
+    margin-left: 0.35rem;
   }
 
   main {
@@ -1624,26 +1654,17 @@ footer {
     font-size: 1.15rem;
   }
 
-  .select-filter {
-    font-size: 16px;
-    padding: 0.65rem 0.5rem;
+  .tab-label-full {
+    display: none !important;
   }
 
-  .category-tabs {
-    padding: 0.25rem 0.75rem 0.5rem;
-    margin: 0 -0.75rem;
-    gap: 0.4rem;
+  .tab-label-short {
+    display: inline !important;
   }
 
   .tab-btn {
-    padding: 0.45rem 0.7rem;
+    padding: 0.55rem 0.65rem;
     font-size: 0.78rem;
-    gap: 0.35rem;
-  }
-
-  .tab-count {
-    font-size: 0.68rem;
-    padding: 0.1rem 0.35rem;
   }
 
   main {
@@ -1804,13 +1825,19 @@ footer {
   }
 
   .filter-group {
-    flex-direction: row;
-    gap: 0.4rem;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.4rem !important;
   }
 
   .select-filter {
-    padding: 0.55rem 0.4rem;
-    font-size: 16px;
+    padding: 0.55rem 0.35rem !important;
+    font-size: 14px !important;
+  }
+
+  .tab-btn {
+    padding: 0.5rem 0.5rem !important;
+    font-size: 0.74rem !important;
   }
 
   .card-actions-top {
@@ -1834,11 +1861,20 @@ footer {
   }
 
   .filter-group {
-    flex-direction: column;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.35rem !important;
   }
 
   .select-filter {
-    width: 100%;
+    width: 100% !important;
+    font-size: 13px !important;
+    padding: 0.45rem 0.25rem !important;
+  }
+
+  .tab-btn {
+    padding: 0.45rem 0.4rem !important;
+    font-size: 0.7rem !important;
   }
 
   .hero-title {
